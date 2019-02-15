@@ -1,0 +1,144 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    background-color: #263452;
+}
+
+.menu_container {
+    width: 18%;
+    float: left;
+    height: 100vh;
+    padding: 10px;
+    border-right: thin solid white;
+}
+
+/* Temporary */
+.menu_container h1 {
+    color: white;
+    font-size: 75px;
+}
+
+/* ********** */
+
+.taken_container {
+    width: 26%;
+    float: left;
+    height: 100vh;
+    border-right: thin solid white;
+}
+
+.taken_titel {
+    background-color: #f0a202;
+    padding: 30px 40px;
+    color: #263452;
+    text-align: center;
+    font-size: 35px;
+    height: 20%;
+}
+
+.taken_header {
+    padding: 0px 10px;
+    ;
+}
+
+.taken_header h1 {
+    float: left;
+}
+
+.taken_header button {
+    position: relative;
+    right: 0%;
+    margin-left: 20px;
+}
+
+.taken_lists .todo_taken {
+    padding: 5px 10px;
+}
+
+.taken_lists .list_header {
+    padding: 15px 10px;
+}
+
+.taken_lists .compleet_taken {
+    padding: 5px 10px;
+}
+
+.taken_deadline_container {
+    width: 26%;
+    float: left;
+    height: 100vh;
+    border-right: thin solid white;
+}
+
+.deadline_titel {
+    background-color: #f0a202;
+    padding: 30px 40px;
+    color: #263452;
+    text-align: center;
+    font-size: 35px;
+    height: 20%;
+}
+
+.deadline_header {
+    padding: 0px 10px;
+}
+
+.deadline_header h1 {
+    float: left;
+}
+
+.deadline_header button {
+    position: relative;
+    right: 0%;
+    margin-left: 20px;
+}
+
+.deadline_list .todo_deadline {
+    padding: 5px 10px;
+}
+
+.deadline_list .list_header {
+    padding: 15px 10px;
+}
+
+.deadline_list .compleet_deadline {
+    padding: 5px 10px;
+}
+
+.rooster_cijfer_container {
+    width: 30%;
+    float: left;
+    height: 100vh;
+}
+
+.rooster_titel {
+    background-color: #f0a202;
+    padding: 40px;
+    color: #263452;
+    text-align: center;
+    font-size: 22px;
+    height: 20%;
+}
+
+.rooster_header{
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+}
+
+.cijferlijst_header{
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+}
+
+.rooster_tabel{
+    padding: 5px 10px;
+}
+
+.cijferlijst_tabel{
+    padding: 5px 10px;
+}

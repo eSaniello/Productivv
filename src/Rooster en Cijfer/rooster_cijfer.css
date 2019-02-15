@@ -1,0 +1,30 @@
+.rooster_cijfer_btn {
+    background-color: #d95d39;
+    color: white;
+    padding: 10px 10px;
+    margin: 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    -webkit-transition: all 0.30s ease-in-out;
+    -moz-transition: all 0.30s ease-in-out;
+    -ms-transition: all 0.30s ease-in-out;
+    -o-transition: all 0.30s ease-in-out;
+    transition: all 0.30s ease-in-out;
+}
+
+.rooster_cijfer_btn:focus {
+    -moz-box-shadow: 0 0 8px #88D5E9;
+    -webkit-box-shadow: 0 0 8px #88D5E9;
+    box-shadow: 0 0 8px #88D5E9;
+    border: 1px solid #88D5E9;
+}
+
+.rooster_cijfer_btn:hover {
+    background-color: #c95636;
+}
+
+.rooster_cijfer_header{
+    display: inline;
+    color: rgb(255, 255, 255);
+}
