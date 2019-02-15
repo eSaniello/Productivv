@@ -3,12 +3,31 @@ let cijferlijstTabel = new Tabulator("#cijferlijst", {
     addRowPos: "bottom",
     tooltips: true,
     columnMinWidth: 50,
-    columns: [
-        {title:"Vak", field:"vak", editor: "input"},
-        {title:"Periode 1", field:"periode_1", editor: "number"},
-        {title:"Periode 2", field:"periode_2", editor: "number"},
-        {title:"Periode 3", field:"periode_3", editor: "number"},
-        {title:"Periode 4", field:"periode_4", editor: "number"}
+    columns: [{
+            title: "Vak",
+            field: "vak",
+            editor: "input"
+        },
+        {
+            title: "Periode 1",
+            field: "periode_1",
+            editor: "number"
+        },
+        {
+            title: "Periode 2",
+            field: "periode_2",
+            editor: "number"
+        },
+        {
+            title: "Periode 3",
+            field: "periode_3",
+            editor: "number"
+        },
+        {
+            title: "Periode 4",
+            field: "periode_4",
+            editor: "number"
+        }
     ],
     cellEditCancelled: (cell) => {
         console.log(`Cancelled editing cell: ${cell._cell.value}`);
@@ -30,7 +49,7 @@ let cijferlijstTabel = new Tabulator("#cijferlijst", {
     }
 });
 
-let deleteCijferlijstBtn = document.getElementById ('deleteCijferlijstRow');
+let deleteCijferlijstBtn = document.getElementById('deleteCijferlijstRow');
 let cijferlijstTabledata;
 
 fetch("http://localhost:8000/cijferlijst", {
@@ -43,7 +62,7 @@ fetch("http://localhost:8000/cijferlijst", {
 
         deleteCijferlijstBtn.onclick = () => {
             let cijferlijst = {};
-            cijferlijst['cijferlijst_id'] = cijferlijstTabledata[cijferlijstTabledata.length -1].cijferlijst_id;
+            cijferlijst['cijferlijst_id'] = cijferlijstTabledata[cijferlijstTabledata.length - 1].cijferlijst_id;
             console.log(cijferlijst);
 
             fetch("http://localhost:8000/cijferlijst/deleteOne", {
@@ -58,7 +77,7 @@ fetch("http://localhost:8000/cijferlijst", {
     }).catch(e => console.log(e));
 }).catch(e => console.log(e));
 
-function addCijferlijstRow(){
+function addCijferlijstRow() {
     let cijferlijst = {};
     cijferlijst['fk_gebruikers_id'] = 1; //Dynamisch achterhalen in final app!
 

@@ -3,15 +3,46 @@ let roosterTabel = new Tabulator("#rooster", {
     addRowPos: "bottom",
     tooltips: true,
     columnMinWidth: 50,
-    columns: [
-        {title:"Blok", field:"blok", editor: "number"},
-        {title:"Tijd", field:"tijd", editor: "input"},
-        {title:"Maandag", field:"maandag", editor: "input"},
-        {title:"Dinsdag", field:"dinsdag", editor: "input"},
-        {title:"Woensdag", field:"woensdag", editor: "input"},
-        {title:"Donderdag", field:"donderdag", editor: "input"},
-        {title:"Vrijdag", field:"vrijdag", editor: "input"},
-        {title:"Zaterdag", field:"zaterdag", editor: "input"}
+    columns: [{
+            title: "Blok",
+            field: "blok",
+            editor: "number"
+        },
+        {
+            title: "Tijd",
+            field: "tijd",
+            editor: "input"
+        },
+        {
+            title: "Maandag",
+            field: "maandag",
+            editor: "input"
+        },
+        {
+            title: "Dinsdag",
+            field: "dinsdag",
+            editor: "input"
+        },
+        {
+            title: "Woensdag",
+            field: "woensdag",
+            editor: "input"
+        },
+        {
+            title: "Donderdag",
+            field: "donderdag",
+            editor: "input"
+        },
+        {
+            title: "Vrijdag",
+            field: "vrijdag",
+            editor: "input"
+        },
+        {
+            title: "Zaterdag",
+            field: "zaterdag",
+            editor: "input"
+        }
     ],
     cellEditCancelled: (cell) => {
         console.log(`Cancelled editing cell: ${cell._cell.value}`);
@@ -33,7 +64,7 @@ let roosterTabel = new Tabulator("#rooster", {
     }
 });
 
-let deleteRoosterBtn = document.getElementById ('deleteRoosterRow');
+let deleteRoosterBtn = document.getElementById('deleteRoosterRow');
 let roosterTabledata;
 
 fetch("http://localhost:8000/rooster", {
@@ -46,7 +77,7 @@ fetch("http://localhost:8000/rooster", {
 
         deleteRoosterBtn.onclick = () => {
             let rooster = {};
-            rooster['rooster_id'] = roosterTabledata[roosterTabledata.length -1].rooster_id;
+            rooster['rooster_id'] = roosterTabledata[roosterTabledata.length - 1].rooster_id;
             console.log(rooster);
 
             fetch("http://localhost:8000/rooster/deleteOne", {
@@ -61,7 +92,7 @@ fetch("http://localhost:8000/rooster", {
     }).catch(e => console.log(e));
 }).catch(e => console.log(e));
 
-function addRoosterRow(){
+function addRoosterRow() {
     let rooster = {};
     rooster['fk_gebruikers_id'] = 1; //Dynamisch achterhalen in final app!
 
