@@ -50,7 +50,7 @@ form.addEventListener('submit', (event) => {
 
         console.log(taak);
 
-        fetch('http://localhost:8000/taken/create', {
+        fetch('https://productivv-backend.herokuapp.com/taken/create', {
             method: 'POST',
             body: JSON.stringify(taak),
             headers: fetchHeaders
@@ -72,7 +72,7 @@ form.addEventListener('submit', (event) => {
 
         console.log(taak);
 
-        fetch('http://localhost:8000/taken', {
+        fetch('https://productivv-backend.herokuapp.com/taken', {
             method: 'PATCH',
             body: JSON.stringify(taak),
             headers: fetchHeaders
@@ -88,7 +88,7 @@ form.addEventListener('submit', (event) => {
 }, true);
 
 
-fetch('http://localhost:8000/taken', {
+fetch('https://productivv-backend.herokuapp.com/taken', {
     method: 'GET',
     headers: fetchHeaders
 }).then(res => {
@@ -131,7 +131,7 @@ fetch('http://localhost:8000/taken', {
                             let taak_id = {};
                             taak_id['taak_id'] = close[i].parentElement.classList.item(0);
 
-                            fetch("http://localhost:8000/taken", {
+                            fetch("https://productivv-backend.herokuapp.com/taken", {
                                 method: "DELETE",
                                 body: JSON.stringify(taak_id),
                                 headers: fetchHeaders
@@ -155,7 +155,7 @@ fetch('http://localhost:8000/taken', {
                         form.removeAttribute('class');
                         form.classList.add(edit[i].parentElement.classList.item(0)); //id of the task
 
-                        fetch(`http://localhost:8000/taken/${ edit[i].parentElement.classList.item(0) }`, {
+                        fetch(`https://productivv-backend.herokuapp.com/taken/${ edit[i].parentElement.classList.item(0) }`, {
                             method: 'GET',
                             headers: fetchHeaders
                         }).then(res => {
@@ -183,7 +183,7 @@ fetch('http://localhost:8000/taken', {
                     share[i].onclick = function () {
                         console.log('Share button clicked');
 
-                        fetch(`http://localhost:8000/taken/${ share[i].parentElement.classList.item(0) }`, {
+                        fetch(`https://productivv-backend.herokuapp.com/taken/${ share[i].parentElement.classList.item(0) }`, {
                             method: 'GET',
                             headers: fetchHeaders
                         }).then(res => {
@@ -225,7 +225,7 @@ for (let i = 0; i < close.length; i++) {
         let taak_id = {};
         taak_id['taak_id'] = close[i].parentElement.classList.item(0);
 
-        fetch("http://localhost:8000/taken", {
+        fetch("https://productivv-backend.herokuapp.com/taken", {
             method: "DELETE",
             body: JSON.stringify(taak_id),
             headers: fetchHeaders
@@ -254,7 +254,7 @@ for (let i = 0; i < edit.length; i++) {
         form.removeAttribute('class');
         form.classList.add(edit[i].parentElement.classList.item(0));
 
-        fetch(`http://localhost:8000/taken/${ edit[i].parentElement.classList.item(0) }`, {
+        fetch(`https://productivv-backend.herokuapp.com/taken/${ edit[i].parentElement.classList.item(0) }`, {
             method: 'GET',
             headers: fetchHeaders
         }).then(res => {
@@ -300,7 +300,7 @@ list.addEventListener('click', function (ev) {
             updatedTaak['compleet'] = 1;
             updatedTaak['taak_id'] = ev.target.classList.item(0);
 
-            fetch('http://localhost:8000/taken', {
+            fetch('https://productivv-backend.herokuapp.com/taken', {
                 method: 'PATCH',
                 body: JSON.stringify(updatedTaak),
                 headers: fetchHeaders
@@ -313,7 +313,7 @@ list.addEventListener('click', function (ev) {
             updatedTaak['compleet'] = 0;
             updatedTaak['taak_id'] = ev.target.classList.item(0);
 
-            fetch('http://localhost:8000/taken', {
+            fetch('https://productivv-backend.herokuapp.com/taken', {
                 method: 'PATCH',
                 body: JSON.stringify(updatedTaak),
                 headers: fetchHeaders
@@ -333,7 +333,7 @@ completedList.addEventListener('click', function (ev) {
             updatedTaak['compleet'] = 1;
             updatedTaak['taak_id'] = ev.target.classList.item(0);
 
-            fetch('http://localhost:8000/taken', {
+            fetch('https://productivv-backend.herokuapp.com/taken', {
                 method: 'PATCH',
                 body: JSON.stringify(updatedTaak),
                 headers: fetchHeaders
@@ -346,7 +346,7 @@ completedList.addEventListener('click', function (ev) {
             updatedTaak['compleet'] = 0;
             updatedTaak['taak_id'] = ev.target.classList.item(0);
 
-            fetch('http://localhost:8000/taken', {
+            fetch('https://productivv-backend.herokuapp.com/taken', {
                 method: 'PATCH',
                 body: JSON.stringify(updatedTaak),
                 headers: fetchHeaders

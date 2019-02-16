@@ -41,7 +41,7 @@ let cijferlijstTabel = new Tabulator("#cijferlijst", {
         cijferlijst[cell._cell.column.field] = cell._cell.value;
         cijferlijst['cijferlijst_id'] = cell._cell.row.data.cijferlijst_id;
 
-        fetch("http://localhost:8000/cijferlijst", {
+        fetch("https://productivv-backend.herokuapp.com/cijferlijst", {
             method: "PATCH",
             headers: fetchHeaders,
             body: JSON.stringify(cijferlijst)
@@ -52,7 +52,7 @@ let cijferlijstTabel = new Tabulator("#cijferlijst", {
 let deleteCijferlijstBtn = document.getElementById('deleteCijferlijstRow');
 let cijferlijstTabledata;
 
-fetch("http://localhost:8000/cijferlijst", {
+fetch("https://productivv-backend.herokuapp.com/cijferlijst", {
     method: 'GET',
     headers: fetchHeaders
 }).then(res => {
@@ -65,7 +65,7 @@ fetch("http://localhost:8000/cijferlijst", {
             cijferlijst['cijferlijst_id'] = cijferlijstTabledata[cijferlijstTabledata.length - 1].cijferlijst_id;
             console.log(cijferlijst);
 
-            fetch("http://localhost:8000/cijferlijst/deleteOne", {
+            fetch("https://productivv-backend.herokuapp.com/cijferlijst/deleteOne", {
                 method: "DELETE",
                 headers: fetchHeaders,
                 body: JSON.stringify(cijferlijst)
@@ -81,7 +81,7 @@ function addCijferlijstRow() {
     let cijferlijst = {};
     cijferlijst['fk_gebruikers_id'] = 1; //Dynamisch achterhalen in final app!
 
-    fetch("http://localhost:8000/cijferlijst/create", {
+    fetch("https://productivv-backend.herokuapp.com/cijferlijst/create", {
         method: 'POST',
         headers: fetchHeaders,
         body: JSON.stringify(cijferlijst)
