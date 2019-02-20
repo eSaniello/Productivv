@@ -52,18 +52,17 @@ let cijferlijstTabel = new Tabulator("#cijferlijst", {
 let deleteCijferlijstBtn = document.getElementById('deleteCijferlijstRow');
 let cijferlijstTabledata;
 
-fetch("https://productivv-backend.herokuapp.com/cijferlijst", {
+fetch(`https://productivv-backend.herokuapp.com/gebruikers/${ localStorage.getItem("gebruikers_naam") }`, {
     method: 'GET',
     headers: fetchHeaders
 }).then(res => {
     res.json().then(data => {
-        cijferlijstTabledata = Object.keys(data).map(i => data[i]);
+        cijferlijstTabledata = Object.keys(data.cijferlijsts).map(i => data.cijferlijsts[i]);
         cijferlijstTabel.setData(cijferlijstTabledata);
 
         deleteCijferlijstBtn.onclick = () => {
             let cijferlijst = {};
             cijferlijst['cijferlijst_id'] = cijferlijstTabledata[cijferlijstTabledata.length - 1].cijferlijst_id;
-            console.log(cijferlijst);
 
             fetch("https://productivv-backend.herokuapp.com/cijferlijst/deleteOne", {
                 method: "DELETE",
@@ -79,7 +78,7 @@ fetch("https://productivv-backend.herokuapp.com/cijferlijst", {
 
 function addCijferlijstRow() {
     let cijferlijst = {};
-    cijferlijst['fk_gebruikers_id'] = 1; //Dynamisch achterhalen in final app!
+    cijferlijst['fk_gebruikers_id'] = localStorage.getItem("gebruikers_id"); //Dynamisch achterhalen in final app!
 
     fetch("https://productivv-backend.herokuapp.com/cijferlijst/create", {
         method: 'POST',

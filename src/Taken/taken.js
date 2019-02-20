@@ -46,7 +46,7 @@ form.addEventListener('submit', (event) => {
         taak['prioriteit'] = document.getElementById('prioriteit').value;
         taak['categorie'] = document.getElementById('categorie').value;
         //dynamisch achterhalen in full app.
-        taak['fk_gebruikers_id'] = 1;
+        taak['fk_gebruikers_id'] = localStorage.getItem("gebruikers_id");;
 
         console.log(taak);
 
@@ -88,27 +88,26 @@ form.addEventListener('submit', (event) => {
 }, true);
 
 
-fetch('https://productivv-backend.herokuapp.com/taken', {
+fetch(`https://productivv-backend.herokuapp.com/gebruikers/${ localStorage.getItem("gebruikers_naam") }`, {
     method: 'GET',
     headers: fetchHeaders
 }).then(res => {
     res.json().then(data => {
-        console.log(data);
+        
+        for (let j = 0; j < data.takens.length; j++) {
 
-        for (let j = 0; j < data.length; j++) {
-
-            if (data[j].categorie != null && data[j].prioriteit != null) {
+            if (data.takens[j].categorie != null && data.takens[j].prioriteit != null) {
 
                 // Create a new list item when clicking on the "Add" button
                 let li = document.createElement("li");
-                let t = document.createTextNode(data[j].titel);
+                let t = document.createTextNode(data.takens[j].titel);
                 li.appendChild(t);
-                li.classList.add(data[j].taak_id);
+                li.classList.add(data.takens[j].taak_id);
 
 
                 let completedList = document.getElementById('completedlist');
 
-                if (data[j].compleet == false)
+                if (data.takens[j].compleet == false)
                     document.getElementById("todolist").appendChild(li);
                 else {
                     completedList.append(li);

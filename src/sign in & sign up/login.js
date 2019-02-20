@@ -47,6 +47,8 @@ login_form.addEventListener('submit', (event) => {
                             aanmeld_btn_anim.classList.remove("spinner-grow-sm");
                             aanmeld_btn_text.innerHTML = "Aanmelden";
                         } else {
+                            localStorage.setItem("gebruikers_id", data.gebruikers_id);
+                            localStorage.setItem("gebruikers_naam", data.gebruikers_naam);
                             window.location.replace("./src/dashboard.html");
                         }
                     }).catch(e => console.log(e));

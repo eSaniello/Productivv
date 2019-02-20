@@ -67,18 +67,17 @@ let roosterTabel = new Tabulator("#rooster", {
 let deleteRoosterBtn = document.getElementById('deleteRoosterRow');
 let roosterTabledata;
 
-fetch("https://productivv-backend.herokuapp.com/rooster", {
+fetch(`https://productivv-backend.herokuapp.com/gebruikers/${ localStorage.getItem("gebruikers_naam") }`, {
     method: 'GET',
     headers: fetchHeaders
 }).then(res => {
     res.json().then(data => {
-        roosterTabledata = Object.keys(data).map(i => data[i]);
+        roosterTabledata = Object.keys(data.roosters).map(i => data.roosters[i]);
         roosterTabel.setData(roosterTabledata);
 
         deleteRoosterBtn.onclick = () => {
             let rooster = {};
             rooster['rooster_id'] = roosterTabledata[roosterTabledata.length - 1].rooster_id;
-            console.log(rooster);
 
             fetch("https://productivv-backend.herokuapp.com/rooster/deleteOne", {
                 method: "DELETE",
@@ -94,7 +93,7 @@ fetch("https://productivv-backend.herokuapp.com/rooster", {
 
 function addRoosterRow() {
     let rooster = {};
-    rooster['fk_gebruikers_id'] = 1; //Dynamisch achterhalen in final app!
+    rooster['fk_gebruikers_id'] = localStorage.getItem("gebruikers_id"); //Dynamisch achterhalen in final app!
 
     fetch("https://productivv-backend.herokuapp.com/rooster/create", {
         method: 'POST',
