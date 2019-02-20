@@ -63,7 +63,7 @@ form_deadline.addEventListener('submit', (event) => {
         console.log(taak);
 
         fetch('https://productivv-backend.herokuapp.com/taken', {
-            method: 'PATCH',
+            method: 'PUT',
             body: JSON.stringify(taak),
             headers: fetchHeaders
         }).then(res => {
@@ -287,7 +287,7 @@ list_deadline.addEventListener('click', function (ev) {
             updatedTaak['taak_id'] = ev.target.classList.item(0);
 
             fetch('https://productivv-backend.herokuapp.com/taken', {
-                method: 'PATCH',
+                method: 'PUT',
                 body: JSON.stringify(updatedTaak),
                 headers: fetchHeaders
             }).then(res => console.log(res)).catch(e => console.log(e));
@@ -300,7 +300,7 @@ list_deadline.addEventListener('click', function (ev) {
             updatedTaak['taak_id'] = ev.target.classList.item(0);
 
             fetch('https://productivv-backend.herokuapp.com/taken', {
-                method: 'PATCH',
+                method: 'PUT',
                 body: JSON.stringify(updatedTaak),
                 headers: fetchHeaders
             }).then(res => console.log(res)).catch(e => console.log(e));
@@ -320,7 +320,7 @@ completedList_deadline.addEventListener('click', function (ev) {
             updatedTaak['taak_id'] = ev.target.classList.item(0);
 
             fetch('https://productivv-backend.herokuapp.com/taken', {
-                method: 'PATCH',
+                method: 'PUT',
                 body: JSON.stringify(updatedTaak),
                 headers: fetchHeaders
             }).then(res => console.log(res)).catch(e => console.log(e));
@@ -333,7 +333,7 @@ completedList_deadline.addEventListener('click', function (ev) {
             updatedTaak['taak_id'] = ev.target.classList.item(0);
 
             fetch('https://productivv-backend.herokuapp.com/taken', {
-                method: 'PATCH',
+                method: 'PUT',
                 body: JSON.stringify(updatedTaak),
                 headers: fetchHeaders
             }).then(res => console.log(res)).catch(e => console.log(e));

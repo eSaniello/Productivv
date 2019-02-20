@@ -42,7 +42,7 @@ let cijferlijstTabel = new Tabulator("#cijferlijst", {
         cijferlijst['cijferlijst_id'] = cell._cell.row.data.cijferlijst_id;
 
         fetch("https://productivv-backend.herokuapp.com/cijferlijst", {
-            method: "PATCH",
+            method: "PUT",
             headers: fetchHeaders,
             body: JSON.stringify(cijferlijst)
         }).then(res => res.json()).catch(e => console.log(e));

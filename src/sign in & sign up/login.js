@@ -4,7 +4,15 @@ fetchHeaders.append('Content-Type', 'application/json');
 
 const login_form = document.getElementById('login_form');
 
+const aanmeld_btn_anim = document.getElementById('aanmeld_btn_anim');
+const inschrijf_btn_anim = document.getElementById('inschrijf_btn_anim');
+const aanmeld_btn_text = document.getElementById('aanmeld_btn_text');
+const inschrijf_btn_text = document.getElementById('inschrijf_btn_text');
+
 login_form.addEventListener('submit', (event) => {
+    aanmeld_btn_anim.classList.add("spinner-grow");
+    aanmeld_btn_anim.classList.add("spinner-grow-sm");
+    aanmeld_btn_text.innerHTML = "Loading...";
 
     const gebruiker = {};
     gebruiker['gebruikers_naam'] = document.getElementById('gebruikers_naam_login').value;
@@ -16,10 +24,34 @@ login_form.addEventListener('submit', (event) => {
     }).then(res => {
         res.json().then(data => {
             if (data == null) {
-                alert('Gebruiker bestaat niet')
-            } else {
+                alert('Gebruiker bestaat niet');
 
-                console.log(data);
+                aanmeld_btn_anim.classList.remove("spinner-grow");
+                aanmeld_btn_anim.classList.remove("spinner-grow-sm");
+                aanmeld_btn_text.innerHTML = "Aanmelden";
+            } else {
+                const checkpw = {};
+                checkpw['gebruikers_naam'] = data.gebruikers_naam;
+                checkpw['wachtwoord'] = gebruiker['wachtwoord'];
+
+                fetch('https://productivv-backend.herokuapp.com/gebruikers/check_password', {
+                    method: 'POST',
+                    body: JSON.stringify(checkpw),
+                    headers: fetchHeaders
+                }).then(res => {
+                    res.json().then(check => {
+                        if (check === false) {
+                            alert("Wachtwoord is niet correct!");
+
+                            aanmeld_btn_anim.classList.remove("spinner-grow");
+                            aanmeld_btn_anim.classList.remove("spinner-grow-sm");
+                            aanmeld_btn_text.innerHTML = "Aanmelden";
+                        } else {
+                            window.location.replace("./src/dashboard.html");
+                        }
+                    }).catch(e => console.log(e));
+                }).catch(e => console.log(e));
+
             }
         }).catch(e => console.log(e));
     }).catch(e => console.log(e));
@@ -31,6 +63,9 @@ login_form.addEventListener('submit', (event) => {
 const signup_form = document.getElementById('signup_form');
 
 signup_form.addEventListener('submit', (event) => {
+    inschrijf_btn_anim.classList.add("spinner-grow");
+    inschrijf_btn_anim.classList.add("spinner-grow-sm");
+    inschrijf_btn_text.innerHTML = "Loading...";
 
     const gebruiker = {};
     gebruiker['voornaam'] = document.getElementById('voornaam').value;
@@ -43,6 +78,10 @@ signup_form.addEventListener('submit', (event) => {
 
     if (wachtwoord_verifieren.length < 8 || gebruiker['wachtwoord'].length < 8) {
         alert("wachtwoord moet meer dan 8 karakters bevatten.");
+
+        inschrijf_btn_anim.classList.remove("spinner-grow");
+        inschrijf_btn_anim.classList.remove("spinner-grow-sm");
+        inschrijf_btn_text.innerHTML = "Inschrijven";
     } else {
         if (gebruiker['wachtwoord'] === wachtwoord_verifieren) {
             fetch('https://productivv-backend.herokuapp.com/gebruikers/create', {
@@ -50,12 +89,20 @@ signup_form.addEventListener('submit', (event) => {
                 body: JSON.stringify(gebruiker),
                 headers: fetchHeaders
             }).then(res => {
-                let tab_1 = document.getElementById('tab-1').checked = true;
-                let tab_2 = document.getElementById('tab-2').checked = false;
+                document.getElementById('tab-1').checked = true;
+                document.getElementById('tab-2').checked = false;
                 alert("Inschrijven Succesvol!");
+
+                inschrijf_btn_anim.classList.remove("spinner-grow");
+                inschrijf_btn_anim.classList.remove("spinner-grow-sm");
+                inschrijf_btn_text.innerHTML = "Inschrijven";
             }).catch(e => console.log(e));
         } else {
             alert("Wachtwoorden komen niet overeen.");
+
+            inschrijf_btn_anim.classList.remove("spinner-grow");
+            inschrijf_btn_anim.classList.remove("spinner-grow-sm");
+            inschrijf_btn_text.innerHTML = "Inschrijven";
         }
     }
 

@@ -57,7 +57,7 @@ let roosterTabel = new Tabulator("#rooster", {
         rooster['rooster_id'] = cell._cell.row.data.rooster_id;
 
         fetch("https://productivv-backend.herokuapp.com/rooster", {
-            method: "PATCH",
+            method: "PUT",
             headers: fetchHeaders,
             body: JSON.stringify(rooster)
         }).then(res => res.json()).catch(e => console.log(e));
