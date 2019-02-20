@@ -340,3 +340,17 @@ completedList_deadline.addEventListener('click', function (ev) {
         }
     }
 }, false);
+
+
+
+fetch(`https://productivv-backend.herokuapp.com/gebruikers/${ localStorage.getItem("gebruikers_naam") }`, {
+    method: 'GET',
+    headers: fetchHeaders
+}).then(res => {
+    res.json().then(data => {
+
+        //Alle gebruikers gegevens zitten in de data variabel
+        console.log(data);
+
+    }).catch(e => console.log(e));
+}).catch(e => console.log(e));
