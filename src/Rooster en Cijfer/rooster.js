@@ -3,7 +3,11 @@ let roosterTabel = new Tabulator("#rooster", {
     addRowPos: "bottom",
     tooltips: true,
     columnMinWidth: 50,
+    selectable: true,
     columns: [{
+            title: "X",
+            field: "x"
+        }, {
             title: "Blok",
             field: "blok",
             editor: "number"
@@ -76,17 +80,33 @@ fetch(`https://productivv-backend.herokuapp.com/gebruikers/${ localStorage.getIt
         roosterTabel.setData(roosterTabledata);
 
         deleteRoosterBtn.onclick = () => {
-            let rooster = {};
-            rooster['rooster_id'] = roosterTabledata[roosterTabledata.length - 1].rooster_id;
+            if (roosterTabel.getSelectedData().length > 0) {
+                for (let i = 0; i < roosterTabel.getSelectedData().length; i++) {
+                    let rooster = {};
+                    rooster['rooster_id'] = roosterTabel.getSelectedData()[i].rooster_id;
 
-            fetch("https://productivv-backend.herokuapp.com/rooster/deleteOne", {
-                method: "DELETE",
-                headers: fetchHeaders,
-                body: JSON.stringify(rooster)
-            }).then(res => {
-                roosterTabledata.pop();
-                roosterTabel.setData(roosterTabledata);
-            }).catch(e => console.log(e));
+                    fetch("https://productivv-backend.herokuapp.com/rooster/deleteOne", {
+                        method: "DELETE",
+                        headers: fetchHeaders,
+                        body: JSON.stringify(rooster)
+                    }).then(res => {
+                        roosterTabledata.pop();
+                        roosterTabel.setData(roosterTabledata);
+                    }).catch(e => console.log(e));
+                }
+            } else {
+                let rooster = {};
+                rooster['rooster_id'] = roosterTabledata[roosterTabledata.length - 1].rooster_id;
+
+                fetch("https://productivv-backend.herokuapp.com/rooster/deleteOne", {
+                    method: "DELETE",
+                    headers: fetchHeaders,
+                    body: JSON.stringify(rooster)
+                }).then(res => {
+                    roosterTabledata.pop();
+                    roosterTabel.setData(roosterTabledata);
+                }).catch(e => console.log(e));
+            }
         }
     }).catch(e => console.log(e));
 }).catch(e => console.log(e));
