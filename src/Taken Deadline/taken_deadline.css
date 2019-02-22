@@ -108,6 +108,8 @@
   background: #eee;
   font-size: 18px;
   transition: 0.2s;
+  color: white;
+  font-weight: bold;
 
   /* make the list items unselectable */
   -webkit-user-select: none;

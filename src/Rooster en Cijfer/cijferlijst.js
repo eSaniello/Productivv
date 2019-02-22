@@ -3,7 +3,11 @@ let cijferlijstTabel = new Tabulator("#cijferlijst", {
     addRowPos: "bottom",
     tooltips: true,
     columnMinWidth: 50,
+    selectable: true,
     columns: [{
+            title: "X",
+            field: "x"
+        }, {
             title: "Vak",
             field: "vak",
             editor: "input"
@@ -61,17 +65,33 @@ fetch(`https://productivv-backend.herokuapp.com/gebruikers/${ localStorage.getIt
         cijferlijstTabel.setData(cijferlijstTabledata);
 
         deleteCijferlijstBtn.onclick = () => {
-            let cijferlijst = {};
-            cijferlijst['cijferlijst_id'] = cijferlijstTabledata[cijferlijstTabledata.length - 1].cijferlijst_id;
+            if (cijferlijstTabel.getSelectedData().length > 0) {
+                for (let i = 0; i < cijferlijstTabel.getSelectedData().length; i++) {
+                    let cijferlijst = {};
+                    cijferlijst['cijferlijst_id'] = cijferlijstTabel.getSelectedData()[i].cijferlijst_id;
 
-            fetch("https://productivv-backend.herokuapp.com/cijferlijst/deleteOne", {
-                method: "DELETE",
-                headers: fetchHeaders,
-                body: JSON.stringify(cijferlijst)
-            }).then(res => {
-                cijferlijstTabledata.pop();
-                cijferlijstTabel.setData(cijferlijstTabledata);
-            }).catch(e => console.log(e));
+                    fetch("https://productivv-backend.herokuapp.com/cijferlijst/deleteOne", {
+                        method: "DELETE",
+                        headers: fetchHeaders,
+                        body: JSON.stringify(cijferlijst)
+                    }).then(res => {
+                        cijferlijstTabledata.pop();
+                        cijferlijstTabel.setData(cijferlijstTabledata);
+                    }).catch(e => console.log(e));
+                }
+            } else {
+                let cijferlijst = {};
+                cijferlijst['cijferlijst_id'] = cijferlijstTabledata[cijferlijstTabledata.length - 1].cijferlijst_id;
+
+                fetch("https://productivv-backend.herokuapp.com/cijferlijst/deleteOne", {
+                    method: "DELETE",
+                    headers: fetchHeaders,
+                    body: JSON.stringify(cijferlijst)
+                }).then(res => {
+                    cijferlijstTabledata.pop();
+                    cijferlijstTabel.setData(cijferlijstTabledata);
+                }).catch(e => console.log(e));
+            }
         }
     }).catch(e => console.log(e));
 }).catch(e => console.log(e));

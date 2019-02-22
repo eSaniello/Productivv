@@ -4,11 +4,12 @@
 }
 
 body {
-    background-color: #263452;
+    background-color: #1f2c47;
 }
 
 .custom-container-fluid {
     margin: 0%;
+    padding: 0;
 
 }
 
@@ -16,7 +17,7 @@ body {
 /* Menu */
 
 .custom-input {
-    margin-top: 5%;
+    margin-top: 30px;
 }
 
 
@@ -30,11 +31,11 @@ body {
 #logo {
     margin-left: 0%;
     margin-top: 2%;
-    width: 25%;
+    width: 75px;
 }
 
 .custom-dropdown {
-    margin-top: 10%;
+    margin-top: 30px;
     margin-left: 60%;
 }
 
@@ -44,6 +45,65 @@ body {
     padding-right: 0;
 }
 
+
+/* // MODAL STARTS HERE // */
+/* 
+.bgmodal {
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalcon {
+    height: 300px;
+    width: 500px;
+    background-color: white;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    border-radius: 4px;
+} */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 5px;
+    width: 80%;
+}
+
+.closeModal {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.closeModal:hover,
+.closeModal:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
 
 
 /* ********** */
@@ -59,8 +119,11 @@ body {
 }
 
 .custom-col-4 {
+    height: 100vh;
     padding-left: 2px;
     padding-right: 2px;
+    border-right: thin solid white;
+    /* border-right-color: white; */
 }
 
 
@@ -78,7 +141,7 @@ body {
     color: #263452;
     text-align: center;
     font-size: 35px;
-    height: 20%;
+    height: 10%;
 }
 
 .taken_header {
@@ -121,7 +184,7 @@ body {
     color: #263452;
     text-align: center;
     font-size: 35px;
-    height: 20%;
+    height: 10%;
 }
 
 .deadline_header {
@@ -158,11 +221,11 @@ body {
 
 .rooster_titel {
     background-color: #7b9e89;
-    padding: 40px;
+    padding: 30px 40px;
     color: #263452;
     text-align: center;
-    font-size: 22px;
-    height: 20%;
+    font-size: 32px;
+    height: 10%;
 }
 
 .rooster_header {

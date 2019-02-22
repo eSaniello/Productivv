@@ -12,9 +12,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
         crossorigin="anonymous">
 
-    <!-- local -->
-    <!-- <link rel="stylesheet" href="../../../Opdracht1/Productivv/src/menu/external/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-        crossorigin="anonymous"> -->
+
 
     <!-- Global css file -->
     <link rel="stylesheet" type="text/css" media="screen" href="index.css">
@@ -27,8 +25,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 
-    <!-- <script src="../../../Opdracht1/Productivv/src/menu/external/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script> -->
 
 
     <!-- --------------- -->
@@ -49,6 +45,7 @@
     <!-- ----- -->
 
     <!-- Menu -->
+
     <!--------------------->
 </head>
 
@@ -83,16 +80,54 @@
                         <button class="dropdown-item" type="button">My Calendar</button>
                         <button class="dropdown-item" id="statistics" type="button">Statistics</button>
 
-                        <button class="dropdown-item" type="button">Account Settings</button>
+                        <button class="dropdown-item" type="button" onclick="openMod()">Account Settings</button>
                         <button class="dropdown-item" type="button" onclick="log_off()">Logout</button>
                         <!-- stats -->
 
 
 
+                    </div>
+                </div>
 
+
+                <!-- The Modal -->
+                <div id="myModal" class="modal">
+                    <!-- Modal content -->
+                    <div class="modal-content">
+
+                        <span class="closeModal custom_close" style="margin-left: 97%;">&times;</span>
+
+                        <h1 id=headertext> Instellingen </h1>
+                        <hr>
+                        <br>
+
+                        <form>
+                            <label for="gebruikersnaam_edit">Gebruikersnaam</label>
+                            <input class="taak_tekst_input" type="text" id="gebruikersnaam_edit" name="Gebruikersnaam"
+                                placeholder="Gebruikersnaam">
+
+                            <label for="Voornaam">Voornaam</label>
+                            <input class="taak_tekst_input" type="text" id="voornaam_id" name="Voornaam" placeholder="Voornaam">
+
+                            <label for="achternaam">Achternaam</label>
+                            <input class="taak_tekst_input" type="text" id="achternaam_id" name="Achternaam"
+                                placeholder="Achternaam">
+
+                            <label for="wachtwoord">Wachtwoord</label>
+                            <input class="taak_tekst_input" type="password" id="wachtwoord_id" name="Wachtwoord"
+                                placeholder="Wachtwoord">
+
+                            <button class="btn_taak" type="submit">Opslaan</button>
+
+                        </form>
 
                     </div>
                 </div>
+
+
+
+
+
             </div>
         </div>
 
@@ -107,10 +142,10 @@
                 <div id="myModal" class="modal">
                     <!-- Modal content -->
                     <div class="modal-content">
-                        <span class="closeModal">&times;</span>
+
+                        <span class="closeModal custom_close" style="margin-left: 97%;">&times;</span>
 
                         <h1 id=headertext> Nieuwe Taak </h1>
-
                         <hr>
                         <br>
 
@@ -192,7 +227,7 @@
                 <div id="myModal_deadline" class="modal">
                     <!-- Modal content -->
                     <div class="modal-content">
-                        <span class="closeModal">&times;</span>
+                        <span class="closeModal custom_close" style="margin-left: 97%;">&times;</span>
 
                         <h1 id="headertext_deadline"> Nieuwe Taak </h1>
 
@@ -228,7 +263,7 @@
                 <div class="deadline_header">
                     <h1 class="list_header">Te Doen</h1>
                     <!-- Trigger/Open The Modal -->
-                    <button class="btn btn-warning btn_taak" type="button" id="myBtn_deadline">Nieuwe Taak</button>
+                    <button class="btn btn-warning btn_taak" type="button" id="myBtn_deadline">Nieuwe Deadline</button>
                 </div>
 
                 <br>
@@ -262,7 +297,7 @@
             <!-- Rooster en cijferlijst -->
             <div class="col-6 custom-col-4">
                 <div class="rooster_titel">
-                    <h1>Rooster & Cijfers</h1>
+                    <h2>Rooster & Cijfers</h2>
                 </div>
 
                 <hr>

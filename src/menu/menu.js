@@ -1,9 +1,9 @@
 // check if the localstorage item is defined
-localStorage.getItem("gebruikers_naam") ?
-    (document.getElementsByClassName(
-        "username_setter"
-    )[0].innerHTML = localStorage.getItem("gebruikers_naam")) :
-    "";
+// localStorage.getItem("gebruikers_naam") ?
+//     (document.getElementsByClassName(
+//         "username_setter"
+//     )[0].innerHTML = localStorage.getItem("gebruikers_naam")) :
+//     "";
 
 //
 function log_off() {
@@ -29,11 +29,17 @@ fetch(
         res
             .json()
             .then(data => {
+
+                document.getElementsByClassName(
+                    "username_setter"
+                )[0].innerHTML = data.voornaam + " " + data.achternaam;
+
+
                 //Alle gebruikers gegevens zitten in de data variabel
                 let alldata = data.takens;
                 let array_Length_alldata = alldata.length;
                 for (let i = 0; i < array_Length_alldata; i++) {
-                    console.log(alldata[i].titel);
+                    // console.log(alldata[i].titel);
                 }
             })
             .catch(e => console.log(e));
@@ -42,21 +48,34 @@ fetch(
 
 // types in query , is een onchange , check if is part of the values of the array, if it is then you can click on it and itll take u to the editable version
 
+// modal
 
-// STATS 
-//doughnut
-var ctxD = document.getElementById("doughnutChart").getContext('2d');
-var myLineChart = new Chart(ctxD, {
-    type: 'doughnut',
-    data: {
-        labels: ["Red", "Green", "Yellow", "Grey", "Dark Grey"],
-        datasets: [{
-            data: [300, 50, 100, 40, 120],
-            backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360"],
-            hoverBackgroundColor: ["#FF5A5E", "#5AD3D1", "#FFC870", "#A8B3C5", "#616774"]
-        }]
-    },
-    options: {
-        responsive: true
-    }
-});
+function openMod() {
+    document.getElementById("myModal").style.display = "block";
+}
+
+
+// STATS
+// var options = {
+//     chart: {
+//         type: "donut"
+//     },
+//     series: [44, 55, 41, 17, 15],
+//     responsive: [{
+//         breakpoint: 480,
+//         options: {
+//             chart: {
+//                 width: 10
+//             },
+//             legend: {
+//                 position: "bottom"
+//             }
+//         }
+//     }]
+// };
+
+// var chart = new ApexCharts(document.querySelector("#chart"), options);
+
+// chart.render();
+
+document.getElementById("gebruikersnaam_edit").innerHTML = localStorage.getItem("gebruikers_naam");

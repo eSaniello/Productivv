@@ -93,7 +93,7 @@ fetch(`https://productivv-backend.herokuapp.com/gebruikers/${ localStorage.getIt
     headers: fetchHeaders
 }).then(res => {
     res.json().then(data => {
-        
+
         for (let j = 0; j < data.takens.length; j++) {
 
             if (data.takens[j].categorie != null && data.takens[j].prioriteit != null) {
@@ -104,6 +104,20 @@ fetch(`https://productivv-backend.herokuapp.com/gebruikers/${ localStorage.getIt
                 li.appendChild(t);
                 li.classList.add(data.takens[j].taak_id);
 
+                let today = new Date();
+                let one_day = 1000 * 60 * 60 * 24;
+                let deadline_datum = new Date(data.takens[j].opleverings_datum);
+                let diff = Math.ceil((deadline_datum.getTime() - today.getTime()) / (one_day));
+
+                if (diff >= 5) {
+                    li.style.backgroundColor = '#228e4b';
+                }
+                if (diff >= 2 && diff <= 4) {
+                    li.style.backgroundColor = '#f18805';
+                }
+                if (diff <= 1) {
+                    li.style.backgroundColor = '#ad361f';
+                }
 
                 let completedList = document.getElementById('completedlist');
 

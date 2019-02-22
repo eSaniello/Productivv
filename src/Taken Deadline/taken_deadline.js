@@ -8,9 +8,9 @@ let btn_deadline = document.getElementById("myBtn_deadline");
 let span_deadline = document.getElementsByClassName("closeModal")[1];
 
 btn_deadline.onclick = () => {
-    headerText_deadline.innerHTML = "Nieuwe Taak";
+    headerText_deadline.innerHTML = "Nieuwe Deadline";
     myModal_deadline.style.display = "block";
-    submitBtn_deadline.innerHTML = "Creeer Taak";
+    submitBtn_deadline.innerHTML = "Creeer Deadline";
     document.getElementById('titel_deadline').value = null;
     document.getElementById('omschrijving_deadline').value = null;
     document.getElementById('opleveringsdatum_deadline').value = null;
@@ -31,7 +31,7 @@ span_deadline.onclick = () => {
 const form_deadline = document.getElementById('form_deadline');
 
 form_deadline.addEventListener('submit', (event) => {
-    if (submitBtn_deadline.innerHTML === "Creeer Taak") {
+    if (submitBtn_deadline.innerHTML === "Creeer Deadline") {
         const taak = {};
 
         taak['titel'] = document.getElementById('titel_deadline').value;
@@ -94,6 +94,20 @@ fetch(`https://productivv-backend.herokuapp.com/gebruikers/${ localStorage.getIt
                 li.appendChild(t);
                 li.classList.add(data.takens[j].taak_id);
 
+                let today = new Date();
+                let one_day = 1000 * 60 * 60 * 24;
+                let deadline_datum = new Date(data.takens[j].opleverings_datum);
+                let diff = Math.ceil((deadline_datum.getTime() - today.getTime()) / (one_day));
+
+                if (diff >= 5) {
+                    li.style.backgroundColor = '#228e4b';
+                }
+                if (diff >= 2 && diff <= 4) {
+                    li.style.backgroundColor = '#f18805';
+                }
+                if (diff <= 1) {
+                    li.style.backgroundColor = '#ad361f';
+                }
 
                 let completedList_deadline = document.getElementById('completedlist_deadline');
 
@@ -138,8 +152,8 @@ fetch(`https://productivv-backend.herokuapp.com/gebruikers/${ localStorage.getIt
                 for (let i = 0; i < edit_deadline.length; i++) {
                     edit_deadline[i].onclick = function () {
                         myModal_deadline.style.display = 'block';
-                        headerText_deadline.innerHTML = "Taak Bewerken";
-                        submitBtn_deadline.innerHTML = "Bewerk Taak";
+                        headerText_deadline.innerHTML = "Deadline Bewerken";
+                        submitBtn_deadline.innerHTML = "Bewerk Deadline";
                         console.log('clicked on edit');
                         form_deadline.removeAttribute('class');
                         form_deadline.classList.add(edit_deadline[i].parentElement.classList.item(0)); //id of the task
@@ -340,17 +354,3 @@ completedList_deadline.addEventListener('click', function (ev) {
         }
     }
 }, false);
-
-
-
-fetch(`https://productivv-backend.herokuapp.com/gebruikers/${ localStorage.getItem("gebruikers_naam") }`, {
-    method: 'GET',
-    headers: fetchHeaders
-}).then(res => {
-    res.json().then(data => {
-
-        //Alle gebruikers gegevens zitten in de data variabel
-        console.log(data);
-
-    }).catch(e => console.log(e));
-}).catch(e => console.log(e));
