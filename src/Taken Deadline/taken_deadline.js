@@ -5,12 +5,12 @@ let submitBtn_deadline = document.getElementById('submitBtn_deadline');
 
 let btn_deadline = document.getElementById("myBtn_deadline");
 
-let span_deadline = document.getElementsByClassName("closeModal")[1];
+let span_deadline = document.getElementsByClassName("closeModal")[2];
 
 btn_deadline.onclick = () => {
-    headerText_deadline.innerHTML = "Nieuwe Taak";
+    headerText_deadline.innerHTML = "Nieuwe Deadline";
     myModal_deadline.style.display = "block";
-    submitBtn_deadline.innerHTML = "Creeer Taak";
+    submitBtn_deadline.innerHTML = "Creeer Deadline";
     document.getElementById('titel_deadline').value = null;
     document.getElementById('omschrijving_deadline').value = null;
     document.getElementById('opleveringsdatum_deadline').value = null;
@@ -31,7 +31,7 @@ span_deadline.onclick = () => {
 const form_deadline = document.getElementById('form_deadline');
 
 form_deadline.addEventListener('submit', (event) => {
-    if (submitBtn_deadline.innerHTML === "Creeer Taak") {
+    if (submitBtn_deadline.innerHTML === "Creeer Deadline") {
         const taak = {};
 
         taak['titel'] = document.getElementById('titel_deadline').value;
@@ -102,9 +102,11 @@ fetch(`https://productivv-backend.herokuapp.com/gebruikers/${ localStorage.getIt
                 if (diff >= 5) {
                     li.style.backgroundColor = '#228e4b';
                 }
-                if(diff >= 2 && diff <= 4){
+              
+                if (diff >= 2 && diff <= 4) {
                     li.style.backgroundColor = '#f18805';
                 }
+              
                 if(diff <= 1){
                     li.style.backgroundColor = '#ad361f';
                 }
@@ -152,8 +154,8 @@ fetch(`https://productivv-backend.herokuapp.com/gebruikers/${ localStorage.getIt
                 for (let i = 0; i < edit_deadline.length; i++) {
                     edit_deadline[i].onclick = function () {
                         myModal_deadline.style.display = 'block';
-                        headerText_deadline.innerHTML = "Taak Bewerken";
-                        submitBtn_deadline.innerHTML = "Bewerk Taak";
+                        headerText_deadline.innerHTML = "Deadline Bewerken";
+                        submitBtn_deadline.innerHTML = "Bewerk Deadline";
                         console.log('clicked on edit');
                         form_deadline.removeAttribute('class');
                         form_deadline.classList.add(edit_deadline[i].parentElement.classList.item(0)); //id of the task

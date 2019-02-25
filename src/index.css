@@ -7,20 +7,126 @@ body {
     background-color: #1f2c47;
 }
 
-.menu_container {
-    width: 100vh;
-    height: 15%
-    padding: 10px;
-    border-bottom: thin solid white;
+.custom-container-fluid {
+    margin: 0%;
+    padding: 0;
+
 }
 
-/* Temporary */
-.menu_container h1 {
-    color: white;
-    font-size: 75px;
+
+/* Menu */
+
+.custom-input {
+    margin-top: 30px;
 }
+
+
+.custom-row {
+    width: 100%;
+    height: 90px;
+    background-color: #f0a202;
+    margin: 0%;
+}
+
+#logo {
+    margin-left: 0%;
+    margin-top: 2%;
+    width: 75px;
+}
+
+.custom-dropdown {
+    margin-top: 30px;
+    margin-left: 60%;
+}
+
+.custom-row-content {
+    margin-top: 90px;
+    margin-right: 0;
+    padding-right: 0;
+}
+
+
+/* // MODAL STARTS HERE // */
+/* 
+.bgmodal {
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalcon {
+    height: 300px;
+    width: 500px;
+    background-color: white;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    border-radius: 4px;
+} */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 5px;
+    width: 80%;
+}
+
+.closeModal {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.closeModal:hover,
+.closeModal:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 
 /* ********** */
+
+
+.btn_taak {
+    background-color: #d95d39;
+    border-color: #d95d39;
+}
+
+.btn_taak:hover {
+    background-color: #f18805;
+}
+
+.custom-col-4 {
+    height: 100vh;
+    padding-left: 2px;
+    padding-right: 2px;
+    border-right: thin solid white;
+    /* border-right-color: white; */
+}
+
+
 
 .taken_container {
     width: 30%;
@@ -30,12 +136,12 @@ body {
 }
 
 .taken_titel {
-    background-color: #f0a202;
+    background-color: #7b9e89;
     padding: 30px 40px;
     color: #263452;
     text-align: center;
     font-size: 35px;
-    height: 20%;
+    height: 10%;
 }
 
 .taken_header {
@@ -73,12 +179,12 @@ body {
 }
 
 .deadline_titel {
-    background-color: #f0a202;
+    background-color: #7b9e89;
     padding: 30px 40px;
     color: #263452;
     text-align: center;
     font-size: 35px;
-    height: 20%;
+    height: 10%;
 }
 
 .deadline_header {
@@ -114,12 +220,12 @@ body {
 }
 
 .rooster_titel {
-    background-color: #f0a202;
-    padding: 40px;
+    background-color: #7b9e89;
+    padding: 30px 40px;
     color: #263452;
     text-align: center;
-    font-size: 22px;
-    height: 20%;
+    font-size: 32px;
+    height: 10%;
 }
 
 .rooster_header {

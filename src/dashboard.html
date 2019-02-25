@@ -7,8 +7,16 @@
     <title>Productivv</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- Bootstrap css -->
+    <link rel="stylesheet" type="text/css" href="lib/bootstrap-4/css/bootstrap.css">
+
     <!-- Global css file -->
     <link rel="stylesheet" type="text/css" media="screen" href="index.css">
+
+    <!-- Bootstrap js cdn -->
+    <script src="./lib/jquery/jquery-3.3.1.min.js"></script>
+    <script src="./lib//popper/popper.min.js"></script>
+    <script src="./lib//bootstrap-4//js/bootstrap.js"></script>
     <!-- --------------- -->
 
     <!-- Rooster en cijferlijst -->
@@ -25,216 +33,282 @@
     <!-- Taken Deadline -->
     <link rel="stylesheet" type="text/css" media="screen" href="Taken Deadline/taken_deadline.css">
     <!-- ----- -->
+
+    <!-- Menu -->
+    <link rel="stylesheet" type="text/css" media="screen" href="menu/menu.css">
 </head>
 
 <body>
-    <div class="container">
-        <!-- Menu -->
-        <div class="menu_container">
-            <h1>MenuMenuMenuMenuMenuMenuMenuMenuMenuMenu</h1>
-        </div>
-        <!-- -------- -->
+    <div class="container-fluid custom-container-fluid ">
+        <div class="row custom-row fixed-top" style="box-shadow: 0px 3px 20px #1f2c47;">
 
-        <!-- Taken -->
-        <div class="taken_container">
-            <!-- The Modal -->
-            <div id="myModal" class="modal">
-                <!-- Modal content -->
-                <div class="modal-content">
-                    <span class="closeModal">&times;</span>
+            <div class="col-3">
+                <img src="menu/logo_productivv.png" id="logo" href="#">
+            </div>
 
-                    <h1 id=headertext> Nieuwe Taak </h1>
+            <div class="col-6">
+                <div class="input-group mb-3 custom-input">
+                    <input type="text" class="form-control" placeholder="Taken, Deadlines..." aria-label="Zoeken" aria-describedby="button-addon2">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" id="button-addon2">Zoeken</button>
+                    </div>
+                </div>
+            </div>
 
-                    <hr>
-                    <br>
+            <div class="col-3">
+                <div class="dropdown custom-dropdown">
+                    <button class="btn btn-secondary dropdown-toggle username_setter" type="button" id="dropdownMenu2"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <!-- name -->
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        <button class="dropdown-item" type="button">Kalender</button>
+                        <button class="dropdown-item" id="statistics" type="button">Statistieken</button>
 
-                    <form id="form" name="form" autocomplete="off">
-                        <label for="titel">Titel</label>
-                        <input class="taak_tekst_input" type="text" id="titel" name="titel" placeholder="Titel..."
-                            required>
+                        <button class="dropdown-item" type="button" onclick="openMod()">Profiel Instellingen</button>
+                        <button class="dropdown-item" type="button" onclick="log_off()">Uitloggen</button>
+                        <!-- stats -->
+                    </div>
+                </div>
+
+                <!-- The Modal -->
+                <div id="myModal01" class="modal01">
+                    <!-- Modal content -->
+                    <div class="modal-content01">
+                        <span class="closeModal custom_close" style="margin-left: 97%;">&times;</span>
+
+                        <h1 id=headertext01> Instellingen </h1>
+                        <hr>
                         <br>
 
-                        <label for="omschrijving">Omschrijving</label>
-                        <textarea class="taak_tekst_input" type="text" id="omschrijving" name="omschrijving"
-                            placeholder="Omschrijving..." style="height:100px" required></textarea> <br>
+                        <form autocomplete="off" id="form_instellingen">
+                            <label for="voornaam_id">Voornaam</label>
+                            <input class="taak_tekst_input" type="text" id="voornaam_id" name="Voornaam" placeholder="Voornaam...">
 
-                        <label for="opleveringsdatum">Opleverings Datum</label>
-                        <input class="taak_tekst_input" type="date" id="opleveringsdatum" name="opleveringsdatum"
-                            placeholder="Opleveringsdatum..." required> <br>
+                            <label for="achternaam_id">Achternaam</label>
+                            <input class="taak_tekst_input" type="text" id="achternaam_id" name="Achternaam"
+                                placeholder="Achternaam...">
 
-                        <label for="prioriteit">Prioriteit</label>
-                        <select class="taak_tekst_input" id="prioriteit" name="prioriteit" required>
-                            <option value="HOOG">Hoog</option>
-                            <option value="MEDIUM">Medium</option>
-                            <option value="LAAG">Laag</option>
-                        </select>
+                            <label for="wachtwoord_id">Wachtwoord</label>
+                            <input class="taak_tekst_input" type="password" id="wachtwoord_id" name="Wachtwoord"
+                                placeholder="Wachtwoord...">
 
-                        <label for="categorie">Categorie</label>
-                        <select class="taak_tekst_input" id="categorie" name="categorie" required>
-                            <option value="Generaal">Generaal</option>
-                            <option value="Huiswerk">Huiswerk</option>
-                        </select>
+                            <label for="email_id">Email</label>
+                            <input class="taak_tekst_input" type="email" id="email_id" name="Email" placeholder="Email...">
 
-                        <button class="btn_taak" id='submitBtn' type="submit">Creeer Taak</button>
-                    </form>
+                            <button class="btn_taak" type="submit">Opslaan</button>
+                        </form>
+                    </div>
                 </div>
             </div>
-
-            <div id="myDIV" class="taken_titel">
-                <h2>Taken</h2>
-            </div>
-
-            <hr>
-            <br>
-
-            <div class="taken_header">
-                <h1 class="list_header">Te Doen</h1>
-                <!-- Trigger/Open The Modal -->
-                <button class="btn_taak" type="button" id="myBtn">Nieuwe Taak</button>
-            </div>
-
-            <br>
-            <hr>
-
-            <div class="taken_lists">
-                <div class="todo_taken">
-                    <ul class="list" id="todolist">
-
-                    </ul>
-                </div>
-
-                <hr>
-
-                <h1 class="list_header">Compleet</h1>
-
-                <hr>
-
-                <div class="compleet_taken">
-                    <ul class="list" id='completedlist'>
-
-                    </ul>
-                </div>
-            </div>
-
-            <script src="Taken/taken.js"></script>
         </div>
-        <!-- ----------------------------------- -->
 
-        <!-- Taken Deadline -->
-        <div class="taken_deadline_container">
-            <!-- The Modal -->
-            <div id="myModal_deadline" class="modal">
-                <!-- Modal content -->
-                <div class="modal-content">
-                    <span class="closeModal">&times;</span>
+        <div class="row custom-row-content">
 
-                    <h1 id="headertext_deadline"> Nieuwe Taak </h1>
+            <!-- Taken -->
+            <div class="col-3 custom-col-4">
+                <!-- The Modal -->
+                <div id="myModal" class="modal">
+                    <!-- Modal content -->
+                    <div class="modal-content">
 
-                    <hr>
-                    <br>
+                        <span class="closeModal custom_close" style="margin-left: 97%;">&times;</span>
 
-                    <form id="form_deadline" name="form" autocomplete="off">
-                        <label for="titel">Titel</label>
-                        <input class="taak_tekst_input" type="text" id="titel_deadline" name="titel" placeholder="Titel..."
-                            required>
+                        <h1 id=headertext> Nieuwe Taak </h1>
+                        <hr>
                         <br>
 
-                        <label for="omschrijving">Omschrijving</label>
-                        <textarea class="taak_tekst_input" type="text" id="omschrijving_deadline" name="omschrijving"
-                            placeholder="Omschrijving..." style="height:100px" required></textarea> <br>
+                        <form id="form" name="form" autocomplete="off">
+                            <label for="titel">Titel</label>
+                            <input class="taak_tekst_input" type="text" id="titel" name="titel" placeholder="Titel..."
+                                required>
+                            <br>
 
-                        <label for="opleveringsdatum">Opleverings Datum</label>
-                        <input class="taak_tekst_input" type="date" id="opleveringsdatum_deadline" name="opleveringsdatum"
-                            placeholder="Opleveringsdatum..." required> <br>
+                            <label for="omschrijving">Omschrijving</label>
+                            <textarea class="taak_tekst_input" type="text" id="omschrijving" name="omschrijving"
+                                placeholder="Omschrijving..." style="height:100px" required></textarea> <br>
 
-                        <button class="btn_taak" id='submitBtn_deadline' type="submit">Creeer Taak</button>
-                    </form>
+                            <label for="opleveringsdatum">Opleverings Datum</label>
+                            <input class="taak_tekst_input" type="date" id="opleveringsdatum" name="opleveringsdatum"
+                                placeholder="Opleveringsdatum..." required> <br>
+
+                            <label for="prioriteit">Prioriteit</label>
+                            <select class="taak_tekst_input" id="prioriteit" name="prioriteit" required>
+                                <option value="HOOG">Hoog</option>
+                                <option value="MEDIUM">Medium</option>
+                                <option value="LAAG">Laag</option>
+                            </select>
+
+                            <label for="categorie">Categorie</label>
+                            <select class="taak_tekst_input" id="categorie" name="categorie" required>
+                                <option value="Generaal">Generaal</option>
+                                <option value="Huiswerk">Huiswerk</option>
+                            </select>
+
+                            <button class="btn_taak" id='submitBtn' type="submit">Creeer Taak</button>
+                        </form>
+                    </div>
                 </div>
+
+                <div id="myDIV" class="taken_titel">
+                    <h2>Taken</h2>
+                </div>
+
+                <hr>
+                <br>
+
+                <div class="taken_header">
+                    <h1 class="list_header">Te Doen</h1>
+                    <!-- Trigger/Open The Modal -->
+                    <button class="btn_taak" type="button" id="myBtn">Nieuwe Taak</button>
+                </div>
+
+                <br>
+                <hr>
+
+                <div class="taken_lists">
+                    <div class="todo_taken">
+                        <ul class="list" id="todolist">
+
+                        </ul>
+                    </div>
+
+                    <hr>
+
+                    <h1 class="list_header">Compleet</h1>
+
+                    <hr>
+
+                    <div class="compleet_taken">
+                        <ul class="list" id='completedlist'>
+
+                        </ul>
+                    </div>
+                </div>
+
+                <script src="Taken/taken.js"></script>
             </div>
+            <!-- ----------------------------------- -->
 
-            <div id="myDIV" class="deadline_titel">
-                <h2>Deadlines</h2>
+            <!-- Taken Deadline -->
+            <div class="col-3 custom-col-4">
+                <!-- The Modal -->
+                <div id="myModal_deadline" class="modal">
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                        <span class="closeModal custom_close" style="margin-left: 97%;">&times;</span>
+
+                        <h1 id="headertext_deadline"> Nieuwe Taak </h1>
+
+                        <hr>
+                        <br>
+
+                        <form id="form_deadline" name="form" autocomplete="off">
+                            <label for="titel">Titel</label>
+                            <input class="taak_tekst_input" type="text" id="titel_deadline" name="titel" placeholder="Titel..."
+                                required>
+                            <br>
+
+                            <label for="omschrijving">Omschrijving</label>
+                            <textarea class="taak_tekst_input" type="text" id="omschrijving_deadline" name="omschrijving"
+                                placeholder="Omschrijving..." style="height:100px" required></textarea> <br>
+
+                            <label for="opleveringsdatum">Opleverings Datum</label>
+                            <input class="taak_tekst_input" type="date" id="opleveringsdatum_deadline" name="opleveringsdatum"
+                                placeholder="Opleveringsdatum..." required> <br>
+
+                            <button class="btn btn-warning btn_taak" id='submitBtn_deadline' type="submit">Creeer Taak</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div id="myDIV" class="deadline_titel">
+                    <h2>Deadlines</h2>
+                </div>
+
+                <hr>
+                <br>
+
+                <div class="deadline_header">
+                    <h1 class="list_header">Te Doen</h1>
+                    <!-- Trigger/Open The Modal -->
+                    <button class="btn btn-warning btn_taak" type="button" id="myBtn_deadline">Nieuwe Deadline</button>
+                </div>
+
+                <br>
+                <hr>
+
+                <div class="deadline_list">
+                    <div class="todo_deadline">
+                        <ul class="list_deadline" id="todolist_deadline">
+
+                        </ul>
+                    </div>
+
+                    <hr>
+
+                    <h1 class="list_header">Compleet</h1>
+
+                    <hr>
+
+                    <div class="compleet_deadline">
+                        <ul class="list_deadline" id='completedlist_deadline'>
+
+                        </ul>
+                    </div>
+                </div>
+
+                <script src="Taken Deadline/taken_deadline.js"></script>
             </div>
+            <!-- ----------------------------------- -->
 
-            <hr>
-            <br>
 
-            <div class="deadline_header">
-                <h1 class="list_header">Te Doen</h1>
-                <!-- Trigger/Open The Modal -->
-                <button class="btn_taak" type="button" id="myBtn_deadline">Nieuwe Deadline</button>
-            </div>
+            <!-- Rooster en cijferlijst -->
+            <div class="col-6 custom-col-4">
+                <div class="rooster_titel">
+                    <h2>Rooster & Cijfers</h2>
+                </div>
 
-            <br>
-            <hr>
+                <hr>
+                <br>
 
-            <div class="deadline_list">
-                <div class="todo_deadline">
-                    <ul class="list_deadline" id="todolist_deadline">
-
-                    </ul>
+                <div class="rooster_header">
+                    <h1 class="rooster_cijfer_header">Rooster</h1>
+                    <button class="btn btn-warning btn_taak" type="button" onclick="addRoosterRow()">&#10133;</button>
+                    <button class="btn btn-warning btn_taak" type="button" id="deleteRoosterRow">&#10134;</button>
                 </div>
 
                 <hr>
 
-                <h1 class="list_header">Compleet</h1>
+                <div class="rooster_tabel">
+                    <div id="rooster"></div>
+                </div>
+
+                <script src="Rooster en Cijfer/rooster.js"></script>
+
+                <hr>
+                <br>
+
+                <div class="cijferlijst_header">
+                    <h1 class="rooster_cijfer_header">Cijferlijst</h1>
+                    <button class="btn btn-warning btn_taak" type="button" onclick="addCijferlijstRow()">&#10133;</button>
+                    <button class="btn btn-warning btn_taak" type="button" id="deleteCijferlijstRow">&#10134;</button>
+                </div>
 
                 <hr>
 
-                <div class="compleet_deadline">
-                    <ul class="list_deadline" id='completedlist_deadline'>
-
-                    </ul>
+                <div class="cijferlijst_tabel">
+                    <div id="cijferlijst"></div>
                 </div>
-            </div>
 
-            <script src="Taken Deadline/taken_deadline.js"></script>
+                <script src="Rooster en Cijfer/cijferlijst.js"></script>
+            </div>
+            <!-- ----------------------- -->
         </div>
-        <!-- ----------------------------------- -->
-
-
-        <!-- Rooster en cijferlijst -->
-        <div class="rooster_cijfer_container">
-            <div class="rooster_titel">
-                <h1>Rooster & Cijfers</h1>
-            </div>
-
-            <hr>
-            <br>
-
-            <div class="rooster_header">
-                <h1 class="rooster_cijfer_header">Rooster</h1>
-                <button class="rooster_cijfer_btn" type="button" onclick="addRoosterRow()">&#10133;</button>
-                <button class="rooster_cijfer_btn" type="button" id="deleteRoosterRow">&#10134;</button>
-            </div>
-
-            <hr>
-
-            <div class="rooster_tabel">
-                <div id="rooster"></div>
-            </div>
-
-            <script src="Rooster en Cijfer/rooster.js"></script>
-
-            <hr>
-            <br>
-
-            <div class="cijferlijst_header">
-                <h1 class="rooster_cijfer_header">Cijferlijst</h1>
-                <button class="rooster_cijfer_btn" type="button" onclick="addCijferlijstRow()">&#10133;</button>
-                <button class="rooster_cijfer_btn" type="button" id="deleteCijferlijstRow">&#10134;</button>
-            </div>
-
-            <hr>
-
-            <div class="cijferlijst_tabel">
-                <div id="cijferlijst"></div>
-            </div>
-
-            <script src="Rooster en Cijfer/cijferlijst.js"></script>
-        </div>
-        <!-- ----------------------- -->
     </div>
+
+    <script src="menu/menu.js"></script>
+
 </body>
 
 </html>
