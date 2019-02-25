@@ -129,7 +129,7 @@ body {
 
 
 .taken_container {
-    width: 26%;
+    width: 30%;
     float: left;
     height: 100vh;
     border-right: thin solid white;
@@ -172,7 +172,7 @@ body {
 }
 
 .taken_deadline_container {
-    width: 26%;
+    width: 30%;
     float: left;
     height: 100vh;
     border-right: thin solid white;
@@ -214,7 +214,7 @@ body {
 }
 
 .rooster_cijfer_container {
-    width: 30%;
+    width: 40%;
     float: left;
     height: 100vh;
 }

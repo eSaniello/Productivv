@@ -102,10 +102,12 @@ fetch(`https://productivv-backend.herokuapp.com/gebruikers/${ localStorage.getIt
                 if (diff >= 5) {
                     li.style.backgroundColor = '#228e4b';
                 }
+              
                 if (diff >= 2 && diff <= 4) {
                     li.style.backgroundColor = '#f18805';
                 }
-                if (diff <= 1) {
+              
+                if(diff <= 1){
                     li.style.backgroundColor = '#ad361f';
                 }
 
