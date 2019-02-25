@@ -7,26 +7,16 @@
     <title>Productivv</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-
-    <!-- Bootstrap css cdn -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-        crossorigin="anonymous">
-
-
+    <!-- Bootstrap css -->
+    <link rel="stylesheet" type="text/css" href="lib/bootstrap-4/css/bootstrap.css">
 
     <!-- Global css file -->
     <link rel="stylesheet" type="text/css" media="screen" href="index.css">
 
     <!-- Bootstrap js cdn -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-
-
-
+    <script src="./lib/jquery/jquery-3.3.1.min.js"></script>
+    <script src="./lib//popper/popper.min.js"></script>
+    <script src="./lib//bootstrap-4//js/bootstrap.js"></script>
     <!-- --------------- -->
 
     <!-- Rooster en cijferlijst -->
@@ -45,13 +35,12 @@
     <!-- ----- -->
 
     <!-- Menu -->
-
-    <!--------------------->
+    <link rel="stylesheet" type="text/css" media="screen" href="menu/menu.css">
 </head>
 
 <body>
     <div class="container-fluid custom-container-fluid ">
-        <div class="row custom-row fixed-top ">
+        <div class="row custom-row fixed-top" style="box-shadow: 0px 3px 20px #1f2c47;">
 
             <div class="col-3">
                 <img src="menu/logo_productivv.png" id="logo" href="#">
@@ -59,80 +48,60 @@
 
             <div class="col-6">
                 <div class="input-group mb-3 custom-input">
-                    <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addon2">
+                    <input type="text" class="form-control" placeholder="Taken, Deadlines..." aria-label="Zoeken" aria-describedby="button-addon2">
                     <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+                        <button class="btn btn-outline-secondary" type="button" id="button-addon2">Zoeken</button>
                     </div>
                 </div>
             </div>
 
             <div class="col-3">
                 <div class="dropdown custom-dropdown">
-
-
-
-
                     <button class="btn btn-secondary dropdown-toggle username_setter" type="button" id="dropdownMenu2"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <!-- name -->
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <button class="dropdown-item" type="button">My Calendar</button>
-                        <button class="dropdown-item" id="statistics" type="button">Statistics</button>
+                        <button class="dropdown-item" type="button">Kalender</button>
+                        <button class="dropdown-item" id="statistics" type="button">Statistieken</button>
 
-                        <button class="dropdown-item" type="button" onclick="openMod()">Account Settings</button>
-                        <button class="dropdown-item" type="button" onclick="log_off()">Logout</button>
+                        <button class="dropdown-item" type="button" onclick="openMod()">Profiel Instellingen</button>
+                        <button class="dropdown-item" type="button" onclick="log_off()">Uitloggen</button>
                         <!-- stats -->
-
-
-
                     </div>
                 </div>
 
-
                 <!-- The Modal -->
-                <div id="myModal" class="modal">
+                <div id="myModal01" class="modal01">
                     <!-- Modal content -->
-                    <div class="modal-content">
-
+                    <div class="modal-content01">
                         <span class="closeModal custom_close" style="margin-left: 97%;">&times;</span>
 
-                        <h1 id=headertext> Instellingen </h1>
+                        <h1 id=headertext01> Instellingen </h1>
                         <hr>
                         <br>
 
-                        <form>
-                            <label for="gebruikersnaam_edit">Gebruikersnaam</label>
-                            <input class="taak_tekst_input" type="text" id="gebruikersnaam_edit" name="Gebruikersnaam"
-                                placeholder="Gebruikersnaam">
+                        <form autocomplete="off" id="form_instellingen">
+                            <label for="voornaam_id">Voornaam</label>
+                            <input class="taak_tekst_input" type="text" id="voornaam_id" name="Voornaam" placeholder="Voornaam...">
 
-                            <label for="Voornaam">Voornaam</label>
-                            <input class="taak_tekst_input" type="text" id="voornaam_id" name="Voornaam" placeholder="Voornaam">
-
-                            <label for="achternaam">Achternaam</label>
+                            <label for="achternaam_id">Achternaam</label>
                             <input class="taak_tekst_input" type="text" id="achternaam_id" name="Achternaam"
-                                placeholder="Achternaam">
+                                placeholder="Achternaam...">
 
-                            <label for="wachtwoord">Wachtwoord</label>
+                            <label for="wachtwoord_id">Wachtwoord</label>
                             <input class="taak_tekst_input" type="password" id="wachtwoord_id" name="Wachtwoord"
-                                placeholder="Wachtwoord">
+                                placeholder="Wachtwoord...">
+
+                            <label for="email_id">Email</label>
+                            <input class="taak_tekst_input" type="email" id="email_id" name="Email" placeholder="Email...">
 
                             <button class="btn_taak" type="submit">Opslaan</button>
-
                         </form>
-
                     </div>
                 </div>
-
-
-
-
-
             </div>
         </div>
-
-
-
 
         <div class="row custom-row-content">
 

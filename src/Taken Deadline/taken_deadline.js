@@ -5,7 +5,7 @@ let submitBtn_deadline = document.getElementById('submitBtn_deadline');
 
 let btn_deadline = document.getElementById("myBtn_deadline");
 
-let span_deadline = document.getElementsByClassName("closeModal")[1];
+let span_deadline = document.getElementsByClassName("closeModal")[2];
 
 btn_deadline.onclick = () => {
     headerText_deadline.innerHTML = "Nieuwe Deadline";

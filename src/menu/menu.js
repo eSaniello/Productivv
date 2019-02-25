@@ -1,58 +1,63 @@
-// check if the localstorage item is defined
-// localStorage.getItem("gebruikers_naam") ?
-//     (document.getElementsByClassName(
-//         "username_setter"
-//     )[0].innerHTML = localStorage.getItem("gebruikers_naam")) :
-//     "";
-
-//
+//log out
 function log_off() {
     localStorage.clear();
     window.location.replace("../index.html");
 }
 
-// total amount
-//     complete taken
-//     todo
+form_instellingen = document.getElementById('form_instellingen');
 
-// Data.takens
+modalInstellingen = document.getElementById("myModal01");
 
-fetch(
-        `https://productivv-backend.herokuapp.com/gebruikers/${localStorage.getItem(
-    "gebruikers_naam"
-  )}`, {
-            method: "GET",
-            headers: fetchHeaders
-        }
-    )
-    .then(res => {
-        res
-            .json()
-            .then(data => {
+instellingenCloseBtn = document.getElementsByClassName("closeModal")[0];
 
-                document.getElementsByClassName(
-                    "username_setter"
-                )[0].innerHTML = data.voornaam + " " + data.achternaam;
-
-
-                //Alle gebruikers gegevens zitten in de data variabel
-                let alldata = data.takens;
-                let array_Length_alldata = alldata.length;
-                for (let i = 0; i < array_Length_alldata; i++) {
-                    // console.log(alldata[i].titel);
-                }
-            })
-            .catch(e => console.log(e));
-    })
-    .catch(e => console.log(e));
-
-// types in query , is een onchange , check if is part of the values of the array, if it is then you can click on it and itll take u to the editable version
-
-// modal
-
-function openMod() {
-    document.getElementById("myModal").style.display = "block";
+instellingenCloseBtn.onclick = () => {
+    modalInstellingen.style.display = "none";
 }
+
+//get data and fill in the text inputfields
+fetch(`https://productivv-backend.herokuapp.com/gebruikers/${localStorage.getItem("gebruikers_naam")}`, {
+    method: "GET",
+    headers: fetchHeaders
+}).then(res => {
+    res.json().then(data => {
+
+        document.getElementsByClassName("username_setter")[0].innerHTML = data.voornaam + " " + data.achternaam;
+
+        document.getElementById("voornaam_id").value = data.voornaam;
+        document.getElementById("achternaam_id").value = data.achternaam;
+        document.getElementById("email_id").value = data.email;
+    }).catch(e => console.log(e));
+}).catch(e => console.log(e));
+
+//open modal
+function openMod() {
+    modalInstellingen.style.display = "block";
+}
+
+//update user
+form_instellingen.addEventListener('submit', (event) => {
+    const gebruiker = {};
+    gebruiker['voornaam'] = document.getElementById("voornaam_id").value;
+    gebruiker['achternaam'] = document.getElementById("achternaam_id").value;
+    gebruiker['wachtwoord'] = document.getElementById("wachtwoord_id").value;
+    gebruiker['email'] = document.getElementById("email_id").value;
+    gebruiker['gebruikers_id'] = localStorage.getItem('gebruikers_id');
+
+    fetch(`https://productivv-backend.herokuapp.com/gebruikers`, {
+        method: "PUT",
+        headers: fetchHeaders,
+        body: JSON.stringify(gebruiker)
+    }).then(res => {
+        console.log(res.json());
+
+        modalInstellingen.style.display = "none";
+        alert("Voltooid!");
+        //reload the page to load new entries in database
+        location.reload();
+    }).catch(e => console.log(e));
+
+    event.preventDefault();
+}, true);
 
 
 // STATS
@@ -77,5 +82,3 @@ function openMod() {
 // var chart = new ApexCharts(document.querySelector("#chart"), options);
 
 // chart.render();
-
-document.getElementById("gebruikersnaam_edit").innerHTML = localStorage.getItem("gebruikers_naam");

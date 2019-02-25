@@ -9,7 +9,7 @@ let submitBtn = document.getElementById('submitBtn');
 
 let btn = document.getElementById("myBtn");
 
-let span = document.getElementsByClassName("closeModal")[0];
+let span = document.getElementsByClassName("closeModal")[1];
 
 btn.onclick = () => {
     headerText.innerHTML = "Nieuwe Taak";
