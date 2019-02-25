@@ -12,7 +12,7 @@ const inschrijf_btn_text = document.getElementById('inschrijf_btn_text');
 login_form.addEventListener('submit', (event) => {
     aanmeld_btn_anim.classList.add("spinner-grow");
     aanmeld_btn_anim.classList.add("spinner-grow-sm");
-    aanmeld_btn_text.innerHTML = "Momentje...";
+    aanmeld_btn_text.innerHTML = "Momentje....";
 
     const gebruiker = {};
     gebruiker['gebruikers_naam'] = document.getElementById('gebruikers_naam_login').value;
@@ -67,7 +67,7 @@ const signup_form = document.getElementById('signup_form');
 signup_form.addEventListener('submit', (event) => {
     inschrijf_btn_anim.classList.add("spinner-grow");
     inschrijf_btn_anim.classList.add("spinner-grow-sm");
-    inschrijf_btn_text.innerHTML = "Momentje...";
+    inschrijf_btn_text.innerHTML = "Momentje....";
 
     const gebruiker = {};
     gebruiker['voornaam'] = document.getElementById('voornaam').value;

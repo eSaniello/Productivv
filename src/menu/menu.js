@@ -39,7 +39,9 @@ form_instellingen.addEventListener('submit', (event) => {
     const gebruiker = {};
     gebruiker['voornaam'] = document.getElementById("voornaam_id").value;
     gebruiker['achternaam'] = document.getElementById("achternaam_id").value;
-    gebruiker['wachtwoord'] = document.getElementById("wachtwoord_id").value;
+    if (document.getElementById("wachtwoord_id").value !== "") {
+        gebruiker['wachtwoord'] = document.getElementById("wachtwoord_id").value;
+    }
     gebruiker['email'] = document.getElementById("email_id").value;
     gebruiker['gebruikers_id'] = localStorage.getItem('gebruikers_id');
 
